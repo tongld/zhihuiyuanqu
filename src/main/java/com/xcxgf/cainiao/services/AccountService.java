@@ -145,14 +145,14 @@ public class AccountService {
      */
     public int deleteAccount(Account account){
         Room room=new Room();
-        String contractId=account.getContractId();
-        String buildingName=account.getBuildingName();
-        String owner=account.getOwner();
+//        String contractId=account.getContractId();
+//        String buildingName=account.getBuildingName();
+//        String owner=account.getOwner();
         room.setRoomNumber(account.getRoomNumber());
-        room.setOwner(owner);
-        room.setBuildingName(buildingName);
+        room.setOwner(account.getOwner());
+        room.setBuildingName(account.getBuildingName());
         accountMapper.updateRoom2(room);
-        return accountMapper.deleteAccount(contractId);
+        return accountMapper.deleteAccount(account.getContractId());
     }
 
     /**
