@@ -58,17 +58,11 @@ public class CertificatService {
 
     /**
      * 获取待审核或已审核的申请信息(未测试)
-     * @param type 待审核的信息类型
+     * @param status 待审核的信息类型
      * @return
      */
-    public List<Certification> getCertificatByStatus(String type){
-        Boolean status;
-        if(type=="待审核"){
-            status=false;
-        }
-        else{
-            status=true;
-        }
+    public List<Certification> getCertificatByStatus(Boolean status){
+
         List<Certification> certifications =certificatMapper.getCertificatByStatus(status);
         return certifications;
     }
@@ -99,6 +93,14 @@ public class CertificatService {
      */
     public int toApprove(Boolean approval,int id){
         int i=certificatMapper.toApprove(approval,id);
+        return i;
+    }
+
+
+    public int toRefused(String remark,int id){
+
+        int i=certificatMapper.toRefused(remark,id);
+
         return i;
     }
 }

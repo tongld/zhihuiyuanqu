@@ -71,13 +71,13 @@ public class CertificatController {
 
     /**
      * 获取待审核或已审核的申请信息(未测试)
-     * @param type
+     * @param status
      * @return
      */
     @RequestMapping(method = RequestMethod.POST,value = "/getCertificatByStatus")
-    public List<Certification> getCertificatByStatus(@RequestParam String type){
+    public List<Certification> getCertificatByStatus(@RequestParam Boolean status){
         
-        List<Certification> certifications=certificatService.getCertificatByStatus(type);
+        List<Certification> certifications=certificatService.getCertificatByStatus(status);
         return certifications;
     }
 
@@ -114,5 +114,12 @@ public class CertificatController {
         return i;
     }
 
+
+    @RequestMapping(method = RequestMethod.POST,value = "/refused")
+    public int toRefused(@RequestParam String remark,@RequestParam int id){
+
+        int i=certificatService.toRefused(remark,id);
+        return i;
+    }
 
 }

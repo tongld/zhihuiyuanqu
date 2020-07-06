@@ -12,7 +12,7 @@ public interface CertificatMapper {
      * 查询 全部审核信息
      * @return
      */
-    @Select("select * form certification")
+    @Select("select * from certification")
     public List<Certification> getAllCertificat();
 
     /**
@@ -20,7 +20,7 @@ public interface CertificatMapper {
      * @param id
      * @return
      */
-    @Select("select * form certification where id=#{id}")
+    @Select("select * from certification where id=#{id}")
     public Certification getDetail(int id);
 
     /**
@@ -28,7 +28,7 @@ public interface CertificatMapper {
      * @param status
      * @return
      */
-    @Select("select *form certification where status=#{status}")
+    @Select("select *from certification where status=#{status}")
     public List<Certification> getCertificatByStatus(Boolean status);
 
     /**
@@ -49,5 +49,8 @@ public interface CertificatMapper {
     @Update("update certification set approval=#{approval},status=true where id=#{id}")
     public int toApprove(Boolean approval,int id);
 
+
+    @Update("update certification set approval=false,remark=#{remark},status=true where id=#{id}")
+    public int toRefused(String remark,int id);
 
 }
