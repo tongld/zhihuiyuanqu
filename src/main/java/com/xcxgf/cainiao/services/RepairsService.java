@@ -15,7 +15,7 @@ public class RepairsService {
 
     public int addRepairs(Repairs repairs){
 
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd hh:mm");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd HH:mm");
         repairs.setCreateTime(sdf.format(new Date()));
         return repairsMapper.addRepair(repairs);
     }

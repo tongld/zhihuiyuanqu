@@ -11,6 +11,7 @@ public class Repairs {
     private int status;
     private Boolean audit;
     private String createTime;
+    private String repairman;
     public int getId() {
         return id;
     }
@@ -89,5 +90,13 @@ public class Repairs {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime;
+    }
+
+    public String getRepairman() {
+        return repairman;
+    }
+
+    public void setRepairman(String repairman) {
+        this.repairman = repairman;
     }
 }
