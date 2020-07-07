@@ -1,6 +1,8 @@
 package com.xcxgf.cainiao.services;
 
 import com.xcxgf.cainiao.POJO.Repairs;
+import com.xcxgf.cainiao.common.enums.BaseServiceException;
+import com.xcxgf.cainiao.common.enums.ServiceErrCode;
 import com.xcxgf.cainiao.mapper.RepairsMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +17,10 @@ public class RepairsService {
 
     public int addRepairs(Repairs repairs){
 
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        if (repairs==null){
+            throw new BaseServiceException("参数不能为空！", ServiceErrCode.NOTFOUND_RESULT_ERR);
+        }
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd hh:mm");
         repairs.setCreateTime(sdf.format(new Date()));
         return repairsMapper.addRepair(repairs);
     }
