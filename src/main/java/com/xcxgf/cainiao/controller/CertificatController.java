@@ -70,14 +70,14 @@ public class CertificatController {
     }
 
     /**
-     * 获取待审核或已审核的申请信息(未测试)
+     * 获取待审核或已审核的申请信息
      * @param status
      * @return
      */
     @RequestMapping(method = RequestMethod.POST,value = "/getCertificatByStatus")
-    public List<Certification> getCertificatByStatus(@RequestParam Boolean status){
+    public List<Certification> getCertificatByStatus(@RequestParam Boolean status,@RequestParam int startPage,@RequestParam int pageSize){
         
-        List<Certification> certifications=certificatService.getCertificatByStatus(status);
+        List<Certification> certifications=certificatService.getCertificatByStatus(status,startPage,pageSize);
         return certifications;
     }
 

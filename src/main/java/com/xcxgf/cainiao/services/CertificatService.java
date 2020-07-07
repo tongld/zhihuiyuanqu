@@ -33,7 +33,7 @@ public class CertificatService {
         certification.setProposer(proposer);
         certification.setTelPhone(telPhone);
         Date date=new Date();
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd");
+        SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd hh:mm");
         String filedatename=sdf.format(date);
         String fileName=file.getOriginalFilename();
         String fileNameLast=fileName.substring(fileName.lastIndexOf("."));
@@ -61,9 +61,9 @@ public class CertificatService {
      * @param status 待审核的信息类型
      * @return
      */
-    public List<Certification> getCertificatByStatus(Boolean status){
-
-        List<Certification> certifications =certificatMapper.getCertificatByStatus(status);
+    public List<Certification> getCertificatByStatus(Boolean status,int startPage,int pageSize){
+        int start=(startPage-1)*pageSize;
+        List<Certification> certifications =certificatMapper.getCertificatByStatus(status,start,pageSize);
         return certifications;
     }
     /**

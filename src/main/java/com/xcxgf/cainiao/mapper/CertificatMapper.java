@@ -28,8 +28,8 @@ public interface CertificatMapper {
      * @param status
      * @return
      */
-    @Select("select *from certification where status=#{status}")
-    public List<Certification> getCertificatByStatus(Boolean status);
+    @Select("select *from certification where status=#{status} limit #{startPage},#{pageSize}")
+    public List<Certification> getCertificatByStatus(Boolean status,int startPage,int pageSize);
 
     /**
      * 新增企业认证申请
